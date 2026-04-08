@@ -15,6 +15,20 @@ import sudoku.model.solver.BacktrackingSudokuSolver;
 public class SudokuBoardTest {
 
     @Test
+    void testCheckEndGame_isTrue() {
+        SudokuBoard sudokuBoard = new SudokuBoard(new BacktrackingSudokuSolver());
+
+        try {
+            sudokuBoard.solveGame();
+        } catch (FillingBoardSudokuException e) {
+            e.printStackTrace();
+            fail("solveGame() threw an FillingBoardSudokuException");
+        }
+        
+        assertTrue(sudokuBoard.checkEndGame());
+    }
+
+    @Test
     void testFillBoardCorrectness() {
         SudokuBoard sudokuBoard = new SudokuBoard(new BacktrackingSudokuSolver());
 
